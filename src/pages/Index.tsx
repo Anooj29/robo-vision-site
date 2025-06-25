@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { useNavigate } from 'react-router-dom';
 import { 
   Bot, 
   Brain, 
@@ -23,10 +24,15 @@ import {
   Cpu,
   Zap,
   Cog,
-  Settings
+  Settings,
+  Trophy,
+  Crown,
+  Sparkles
 } from 'lucide-react';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -306,51 +312,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements Section */}
-      <section className="py-16 px-4 bg-gray-800/50">
-        <div className="container mx-auto">
+      {/* Achievements Section - Updated Theme */}
+      <section className="py-16 px-4 bg-gradient-to-br from-purple-900/30 via-blue-900/30 to-indigo-900/30 relative overflow-hidden">
+        {/* Premium background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-16 h-16 bg-gradient-to-br from-gold-400/20 to-yellow-500/20 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-1/3 w-12 h-12 border-2 border-purple-400/30 rounded-lg transform rotate-45 animate-glow"></div>
+          <div className="absolute top-1/2 left-10 w-8 h-8 bg-blue-500/20 rounded-full animate-float delay-500"></div>
+        </div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">Our Achievements</h2>
-            <p className="text-xl text-gray-300 animate-fade-in delay-200">Recognition for our innovation and impact</p>
+            <div className="flex justify-center mb-6">
+              <div className="p-4 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl border border-purple-400/30">
+                <Crown className="h-12 w-12 text-purple-400" />
+              </div>
+            </div>
+            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">Excellence & Recognition</h2>
+            <p className="text-xl text-purple-200 animate-fade-in delay-200">Celebrating our journey of innovation and impact</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: Award,
+                icon: Trophy,
                 title: "Innovation Excellence Award",
                 year: "2024",
-                description: "Best Robotics Startup"
+                description: "Best Robotics Startup",
+                color: "from-purple-600 to-indigo-600"
               },
               {
                 icon: Medal,
                 title: "Education Impact Award",
                 year: "2023",
-                description: "Outstanding Contribution to STEM Education"
+                description: "Outstanding Contribution to STEM Education",
+                color: "from-blue-600 to-purple-600"
               },
               {
                 icon: Award,
                 title: "Tech Entrepreneur Award",
                 year: "2023",
-                description: "Young Innovator Recognition"
+                description: "Young Innovator Recognition",
+                color: "from-indigo-600 to-blue-600"
               },
               {
-                icon: Medal,
+                icon: Sparkles,
                 title: "Research Excellence",
                 year: "2022",
-                description: "Best AI Research Project"
+                description: "Best AI Research Project",
+                color: "from-purple-600 to-pink-600"
               }
             ].map((achievement, index) => (
-              <Card key={index} className="text-center bg-gradient-to-br from-yellow-600/20 to-orange-600/20 border-yellow-500/30 hover:from-yellow-500/30 hover:to-orange-500/30 transform hover:scale-105 hover:rotate-1 transition-all duration-500 group">
-                <CardHeader>
-                  <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full w-fit group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                    <achievement.icon className="h-8 w-8 text-white" />
+              <Card key={index} className="text-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/30 hover:border-purple-400/50 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardHeader className="relative z-10">
+                  <div className="mx-auto mb-4 p-4 bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl w-fit group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-purple-400/20">
+                    <achievement.icon className="h-10 w-10 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
                   </div>
-                  <CardTitle className="text-lg text-white group-hover:text-yellow-400 transition-colors duration-300">{achievement.title}</CardTitle>
-                  <CardDescription className="text-orange-400 font-semibold text-lg">{achievement.year}</CardDescription>
+                  <CardTitle className="text-lg text-white group-hover:text-purple-300 transition-colors duration-300 mb-2">{achievement.title}</CardTitle>
+                  <div className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${achievement.color} text-white text-sm font-semibold`}>
+                    {achievement.year}
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300">{achievement.description}</p>
+                <CardContent className="relative z-10">
+                  <p className="text-purple-200 group-hover:text-white transition-colors duration-300">{achievement.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -372,26 +397,33 @@ const Index = () => {
                 {
                   icon: School,
                   title: "Robotics Lab Setup",
-                  description: "Complete laboratory installation with robots, sensors, programming tools, and comprehensive curriculum designed for different educational levels."
+                  description: "Complete laboratory installation with robots, sensors, programming tools, and comprehensive curriculum designed for different educational levels.",
+                  link: "/services/robotics-lab"
                 },
                 {
                   icon: Users,
-                  title: "Training & Workshops",
-                  description: "Hands-on training sessions for teachers and students covering robotics fundamentals, AI concepts, and practical programming skills."
+                  title: "AI Training & Workshops",
+                  description: "Hands-on training sessions for teachers and students covering robotics fundamentals, AI concepts, and practical programming skills.",
+                  link: "/services/ai-training"
                 },
                 {
                   icon: Brain,
-                  title: "AI Education Programs",
-                  description: "Structured learning paths introducing artificial intelligence, machine learning, and data science concepts through interactive projects."
+                  title: "Industrial Automation",
+                  description: "Precision robotics solutions for manufacturing processes and quality control systems that drive efficiency.",
+                  link: "/services/industrial-automation"
                 }
               ].map((service, index) => (
-                <div key={index} className="flex space-x-4 group hover:bg-gray-800/30 p-4 rounded-lg transition-all duration-300">
+                <div key={index} className="flex space-x-4 group hover:bg-gray-800/30 p-4 rounded-lg transition-all duration-300 cursor-pointer" onClick={() => navigate(service.link)}>
                   <div className="flex-shrink-0 p-3 bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{service.title}</h3>
-                    <p className="text-gray-300">{service.description}</p>
+                    <p className="text-gray-300 mb-3">{service.description}</p>
+                    <Button variant="ghost" className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/20 p-0 group/btn">
+                      Learn More
+                      <ChevronRight className="ml-1 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Button>
                   </div>
                 </div>
               ))}
