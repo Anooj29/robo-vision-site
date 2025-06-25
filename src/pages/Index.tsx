@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,7 +19,11 @@ import {
   Phone,
   MapPin,
   Star,
-  ChevronRight
+  ChevronRight,
+  Cpu,
+  Zap,
+  Cog,
+  Settings
 } from 'lucide-react';
 
 const Index = () => {
@@ -35,9 +38,12 @@ const Index = () => {
       <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2 group">
-              <Bot className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-xl font-bold text-white">VS Tech Horizon</span>
+            <div className="flex items-center space-x-3 group">
+              <img 
+                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                alt="VS Tech Horizon Logo" 
+                className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
             <div className="hidden md:flex space-x-6">
               {['About', 'Work', 'Services', 'Contact'].map((item) => (
@@ -57,15 +63,23 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 animate-pulse"></div>
+        {/* 3D Robotics Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg transform rotate-12 animate-float"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg transform -rotate-45 animate-float delay-300"></div>
+          <div className="absolute top-60 right-1/3 w-20 h-20 border-2 border-blue-400/30 rounded-lg transform rotate-45 animate-glow"></div>
+        </div>
+        
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="animate-fade-in">
               <div className="flex justify-center mb-8">
                 <div className="relative group">
-                  <Brain className="h-24 w-24 text-blue-400 animate-pulse group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute -top-2 -right-2">
-                    <Bot className="h-12 w-12 text-purple-400 group-hover:rotate-12 transition-transform duration-500" />
+                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-400/30 group-hover:scale-110 transition-all duration-500">
+                    <Brain className="h-16 w-16 text-blue-400 animate-pulse" />
+                    <Bot className="h-12 w-12 text-purple-400 absolute -top-2 -right-2 group-hover:rotate-12 transition-transform duration-500" />
+                    <Cpu className="h-8 w-8 text-cyan-400 absolute -bottom-1 -left-1 group-hover:scale-125 transition-transform duration-500" />
                   </div>
                 </div>
               </div>
@@ -84,7 +98,7 @@ const Index = () => {
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group animate-fade-in delay-700"
                 onClick={() => scrollToSection('work')}
               >
-                Explore Our Work
+                Explore Our Robotics Solutions
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </div>
@@ -92,8 +106,71 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Robotics Showcase Section */}
+      <section className="py-16 px-4 bg-gray-800/30 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-1/4 w-6 h-6 bg-blue-400/40 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-1/4 w-4 h-4 bg-purple-400/40 rounded-full animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 left-10 w-8 h-8 border border-cyan-400/30 rounded-full animate-float"></div>
+        </div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">Robotics & AI Innovation</h2>
+            <p className="text-xl text-gray-300 animate-fade-in delay-200">See our cutting-edge robotics designs in action</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Bot,
+                title: "Educational Robots",
+                description: "Interactive learning companions designed to teach programming and robotics fundamentals",
+                color: "from-blue-500 to-cyan-500"
+              },
+              {
+                icon: Brain,
+                title: "AI-Powered Systems",
+                description: "Smart automation solutions with machine learning capabilities for educational environments",
+                color: "from-purple-500 to-pink-500"
+              },
+              {
+                icon: Cog,
+                title: "Industrial Automation",
+                description: "Precision robotics for manufacturing processes and quality control systems",
+                color: "from-orange-500 to-red-500"
+              }
+            ].map((robot, index) => (
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-4 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardHeader className="relative z-10">
+                  <div className="mx-auto mb-4">
+                    <div className={`p-4 bg-gradient-to-br ${robot.color} rounded-2xl w-fit group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative`}>
+                      <robot.icon className="h-12 w-12 text-white" />
+                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-white/30 rounded-full animate-ping"></div>
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors duration-300 text-center">
+                    {robot.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <CardDescription className="text-center text-gray-300 group-hover:text-white transition-colors duration-300">
+                    {robot.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
-      <section id="about" className="py-16 px-4 bg-gray-800/50">
+      <section id="about" className="py-16 px-4 bg-gray-800/50 relative">
+        {/* 3D Elements */}
+        <div className="absolute top-20 right-10 w-24 h-24 border-2 border-blue-400/20 rounded-lg transform rotate-45 animate-glow"></div>
+        <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full animate-float delay-700"></div>
+        
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">About VS Tech Horizon</h2>
@@ -108,28 +185,33 @@ const Index = () => {
               {
                 icon: Lightbulb,
                 title: "Innovation",
-                description: "Developing breakthrough robotics and AI solutions that push the boundaries of what's possible."
+                description: "Developing breakthrough robotics and AI solutions that push the boundaries of what's possible.",
+                accent: "from-yellow-400 to-orange-500"
               },
               {
                 icon: School,
                 title: "Education",
-                description: "Transforming learning experiences through hands-on robotics labs and comprehensive training programs."
+                description: "Transforming learning experiences through hands-on robotics labs and comprehensive training programs.",
+                accent: "from-green-400 to-blue-500"
               },
               {
                 icon: Target,
                 title: "Impact",
-                description: "Creating meaningful change in communities through technology-driven educational initiatives."
+                description: "Creating meaningful change in communities through technology-driven educational initiatives.",
+                accent: "from-purple-400 to-pink-500"
               }
             ].map((value, index) => (
-              <Card key={index} className="bg-gray-800/80 border-gray-700 hover:bg-gray-700/80 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl group">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-fit group-hover:scale-110 transition-transform duration-300">
+              <Card key={index} className="bg-gray-800/80 border-gray-700 hover:bg-gray-700/80 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardHeader className="text-center relative z-10">
+                  <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-fit group-hover:scale-110 transition-transform duration-300 relative">
                     <value.icon className="h-8 w-8 text-white" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
                   </div>
                   <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors duration-300">{value.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-gray-300">
+                <CardContent className="relative z-10">
+                  <CardDescription className="text-center text-gray-300 group-hover:text-white transition-colors duration-300">
                     {value.description}
                   </CardDescription>
                 </CardContent>
@@ -140,64 +222,80 @@ const Index = () => {
       </section>
 
       {/* Our Work Section */}
-      <section id="work" className="py-16 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
+      <section id="work" className="py-16 px-4 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        {/* 3D Background Elements */}
+        <div className="absolute top-10 left-1/3 w-12 h-12 border border-blue-400/20 rounded-lg transform rotate-12 animate-float"></div>
+        <div className="absolute bottom-40 right-1/4 w-8 h-8 bg-purple-500/20 rounded-full animate-pulse delay-300"></div>
+        
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">Our Work</h2>
-            <p className="text-xl text-gray-300 animate-fade-in delay-200">Transforming ideas into reality through innovative projects</p>
+            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">Our Robotics Solutions</h2>
+            <p className="text-xl text-gray-300 animate-fade-in delay-200">Transforming ideas into intelligent robotic reality</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Robotics Lab Setup",
-                description: "Complete robotics laboratories for schools and colleges with state-of-the-art equipment and curriculum.",
-                category: "Education"
+                title: "Smart Robotics Lab Setup",
+                description: "Complete robotics laboratories with AI-powered robots, sensors, and interactive programming environments.",
+                category: "Education",
+                icon: Bot
               },
               {
                 title: "AI Training Programs",
-                description: "Comprehensive artificial intelligence workshops and certification programs for students and professionals.",
-                category: "Training"
+                description: "Comprehensive artificial intelligence workshops with hands-on robotics integration and machine learning.",
+                category: "Training",
+                icon: Brain
               },
               {
-                title: "Industrial Automation",
-                description: "Custom robotics solutions for manufacturing and industrial process optimization.",
-                category: "Industry"
+                title: "Industrial Automation Bots",
+                description: "Custom intelligent robotics solutions for manufacturing optimization and quality control systems.",
+                category: "Industry",
+                icon: Cog
               },
               {
-                title: "Research & Development",
-                description: "Cutting-edge R&D projects in collaboration with academic institutions and industry partners.",
-                category: "Research"
+                title: "Robotics R&D Projects",
+                description: "Cutting-edge research in autonomous systems, human-robot interaction, and AI-driven robotics.",
+                category: "Research",
+                icon: Zap
               },
               {
-                title: "Seminars & Workshops",
-                description: "Interactive seminars on emerging technologies, robotics, and AI for educational institutions.",
-                category: "Education"
+                title: "Interactive Robotics Seminars",
+                description: "Live demonstrations of robotics technology with hands-on programming and AI integration workshops.",
+                category: "Education",
+                icon: Settings
               },
               {
-                title: "Innovation Consulting",
-                description: "Strategic consulting for organizations looking to integrate robotics and AI into their operations.",
-                category: "Consulting"
+                title: "AI Robotics Consulting",
+                description: "Strategic guidance for integrating intelligent robotics and AI automation into organizational workflows.",
+                category: "Consulting",
+                icon: Cpu
               }
             ].map((project, index) => (
-              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl">
-                <CardHeader>
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardHeader className="relative z-10">
                   <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors duration-300">
-                      {project.title}
-                    </CardTitle>
+                    <div className="flex items-center space-x-3">
+                      <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <project.icon className="h-5 w-5 text-white" />
+                      </div>
+                      <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors duration-300">
+                        {project.title}
+                      </CardTitle>
+                    </div>
                     <span className="text-xs bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full">
                       {project.category}
                     </span>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-300 mb-4">
+                <CardContent className="relative z-10">
+                  <CardDescription className="text-gray-300 mb-4 group-hover:text-white transition-colors duration-300">
                     {project.description}
                   </CardDescription>
                   <div className="mt-4">
                     <Button variant="ghost" className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/20 p-0 group/btn">
-                      Learn More
+                      Explore Solution
                       <ChevronRight className="ml-1 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </Button>
                   </div>
@@ -455,8 +553,12 @@ const Index = () => {
       <footer className="bg-black text-white py-12 px-4 border-t border-gray-800">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0 group">
-              <Bot className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+            <div className="flex items-center space-x-3 mb-4 md:mb-0 group">
+              <img 
+                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                alt="VS Tech Horizon Logo" 
+                className="h-8 w-auto group-hover:scale-110 transition-transform duration-300"
+              />
               <span className="text-xl font-bold">VS Tech Horizon Pvt. Ltd</span>
             </div>
             <div className="text-gray-400">
