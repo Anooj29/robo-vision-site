@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Bot, School, Users, Target, CheckCircle, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import RoboticsLabGallery from '@/components/RoboticsLabGallery';
 
 const RoboticsLab = () => {
   const navigate = useNavigate();
@@ -52,6 +52,19 @@ const RoboticsLab = () => {
               Transform your educational institution with state-of-the-art robotics laboratories designed to inspire the next generation of innovators.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Image Gallery Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Robotics Lab Gallery</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Explore our state-of-the-art robotics laboratory facilities and see how we create the perfect learning environment for students.
+            </p>
+          </div>
+          <RoboticsLabGallery />
         </div>
       </section>
 
