@@ -27,7 +27,12 @@ import {
   Settings,
   Trophy,
   Crown,
-  Sparkles
+  Sparkles,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  X
 } from 'lucide-react';
 
 const Index = () => {
@@ -41,7 +46,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-700">
+      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-700 animate-fade-in">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 group">
@@ -52,11 +57,12 @@ const Index = () => {
               />
             </div>
             <div className="hidden md:flex space-x-6">
-              {['About', 'Work', 'Services', 'Contact'].map((item) => (
+              {['About', 'Work', 'Services', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium relative group"
+                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium relative group animate-fade-in"
+                  style={{animationDelay: `${index * 100}ms`}}
                 >
                   {item}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
@@ -82,14 +88,14 @@ const Index = () => {
             <div className="animate-fade-in">
               <div className="flex justify-center mb-8">
                 <div className="relative group">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-400/30 group-hover:scale-110 transition-all duration-500">
+                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-400/30 group-hover:scale-110 transition-all duration-500 animate-float">
                     <Brain className="h-16 w-16 text-blue-400 animate-pulse" />
                     <Bot className="h-12 w-12 text-purple-400 absolute -top-2 -right-2 group-hover:rotate-12 transition-transform duration-500" />
                     <Cpu className="h-8 w-8 text-cyan-400 absolute -bottom-1 -left-1 group-hover:scale-125 transition-transform duration-500" />
                   </div>
                 </div>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">
                 VS Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Horizon</span>
                 <span className="block text-2xl md:text-3xl font-normal text-gray-300 mt-4 animate-fade-in delay-300">
                   Pioneering the Future of Robotics & AI
@@ -147,7 +153,7 @@ const Index = () => {
                 color: "from-orange-500 to-red-500"
               }
             ].map((robot, index) => (
-              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-4 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-4 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardHeader className="relative z-10">
                   <div className="mx-auto mb-4">
@@ -207,7 +213,7 @@ const Index = () => {
                 accent: "from-purple-400 to-pink-500"
               }
             ].map((value, index) => (
-              <Card key={index} className="bg-gray-800/80 border-gray-700 hover:bg-gray-700/80 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl group relative overflow-hidden">
+              <Card key={index} className="bg-gray-800/80 border-gray-700 hover:bg-gray-700/80 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl group relative overflow-hidden animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardHeader className="text-center relative z-10">
                   <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-fit group-hover:scale-110 transition-transform duration-300 relative">
@@ -278,7 +284,7 @@ const Index = () => {
                 icon: Cpu
               }
             ].map((project, index) => (
-              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardHeader className="relative z-10">
                   <div className="flex justify-between items-start mb-2">
@@ -324,7 +330,7 @@ const Index = () => {
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl border border-purple-400/30">
+              <div className="p-4 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl border border-purple-400/30 animate-fade-in">
                 <Crown className="h-12 w-12 text-purple-400" />
               </div>
             </div>
@@ -363,7 +369,7 @@ const Index = () => {
                 color: "from-purple-600 to-pink-600"
               }
             ].map((achievement, index) => (
-              <Card key={index} className="text-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/30 hover:border-purple-400/50 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden">
+              <Card key={index} className="text-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-purple-500/30 hover:border-purple-400/50 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl relative overflow-hidden animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardHeader className="relative z-10">
                   <div className="mx-auto mb-4 p-4 bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl w-fit group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-purple-400/20">
@@ -413,7 +419,7 @@ const Index = () => {
                   link: "/services/industrial-automation"
                 }
               ].map((service, index) => (
-                <div key={index} className="flex space-x-4 group hover:bg-gray-800/30 p-4 rounded-lg transition-all duration-300 cursor-pointer" onClick={() => navigate(service.link)}>
+                <div key={index} className="flex space-x-4 group hover:bg-gray-800/30 p-4 rounded-lg transition-all duration-300 cursor-pointer animate-fade-in" style={{animationDelay: `${index * 200}ms`}} onClick={() => navigate(service.link)}>
                   <div className="flex-shrink-0 p-3 bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
@@ -429,7 +435,7 @@ const Index = () => {
               ))}
             </div>
             
-            <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-gray-700 hover:border-gray-600 transition-all duration-500">
+            <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-gray-700 hover:border-gray-600 transition-all duration-500 animate-fade-in delay-300">
               <h3 className="text-2xl font-bold text-white mb-6">Why Choose Us?</h3>
               <ul className="space-y-4">
                 {[
@@ -439,7 +445,7 @@ const Index = () => {
                   "Proven track record with 50+ institutions",
                   "Award-winning innovative approach"
                 ].map((point, index) => (
-                  <li key={index} className="flex items-center space-x-3 group hover:translate-x-2 transition-transform duration-300">
+                  <li key={index} className="flex items-center space-x-3 group hover:translate-x-2 transition-transform duration-300 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
                     <Star className="h-5 w-5 text-yellow-400 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
                     <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{point}</span>
                   </li>
@@ -479,7 +485,7 @@ const Index = () => {
                 rating: 5
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl">
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 group hover:shadow-2xl animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
                 <CardHeader>
                   <div className="flex space-x-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -518,7 +524,7 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-12">
-            <div>
+            <div className="animate-fade-in">
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
               <div className="space-y-6">
                 {[
@@ -538,7 +544,7 @@ const Index = () => {
                     content: "123 Innovation Drive, Tech City, TC 12345"
                   }
                 ].map((contact, index) => (
-                  <div key={index} className="flex items-center space-x-4 group hover:translate-x-2 transition-transform duration-300">
+                  <div key={index} className="flex items-center space-x-4 group hover:translate-x-2 transition-transform duration-300 animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
                     <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <contact.icon className="h-6 w-6 text-white" />
                     </div>
@@ -551,7 +557,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div>
+            <div className="animate-fade-in delay-300">
               <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
               <form className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -581,20 +587,155 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-12 px-4 border-t border-gray-800">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0 group">
-              <img 
-                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
-                alt="VS Tech Horizon Logo" 
-                className="h-8 w-auto group-hover:scale-110 transition-transform duration-300"
-              />
-              <span className="text-xl font-bold">VS Tech Horizon Pvt. Ltd</span>
+      {/* Enhanced Footer */}
+      <footer className="bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white py-16 px-4 border-t border-gray-700 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-full animate-float"></div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            {/* Company Info */}
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex items-center space-x-3 group">
+                <img 
+                  src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                  alt="VS Tech Horizon Logo" 
+                  className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-xl font-bold">VS Tech Horizon</span>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                Pioneering the future of robotics and AI education through innovative solutions and cutting-edge technology.
+              </p>
+              <div className="flex space-x-4">
+                {[
+                  { icon: Facebook, href: "#", label: "Facebook" },
+                  { icon: Instagram, href: "#", label: "Instagram" },
+                  { icon: X, href: "#", label: "X (Twitter)" },
+                  { icon: Youtube, href: "#", label: "YouTube" },
+                  { icon: Linkedin, href: "#", label: "LinkedIn" }
+                ].map((social, index) => (
+                  <a 
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="p-3 bg-gradient-to-br from-gray-800/60 to-gray-700/60 rounded-full hover:from-blue-600/80 hover:to-purple-600/80 transition-all duration-300 group hover:scale-110 hover:-translate-y-1 animate-fade-in"
+                    style={{animationDelay: `${index * 100}ms`}}
+                  >
+                    <social.icon className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="text-gray-400">
-              <p>&copy; 2024 VS Tech Horizon. All rights reserved.</p>
+
+            {/* Quick Links */}
+            <div className="animate-fade-in delay-200">
+              <h3 className="text-lg font-semibold text-white mb-6 relative">
+                Quick Links
+                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"></span>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { name: "About Us", action: () => scrollToSection('about') },
+                  { name: "Our Work", action: () => scrollToSection('work') },
+                  { name: "Services", action: () => scrollToSection('services') },
+                  { name: "Contact", action: () => scrollToSection('contact') },
+                  { name: "Robotics Lab", action: () => navigate('/services/robotics-lab') },
+                  { name: "AI Training", action: () => navigate('/services/ai-training') }
+                ].map((link, index) => (
+                  <li key={link.name}>
+                    <button
+                      onClick={link.action}
+                      className="text-gray-400 hover:text-blue-400 transition-all duration-300 group flex items-center space-x-2 animate-fade-in"
+                      style={{animationDelay: `${index * 100}ms`}}
+                    >
+                      <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="animate-fade-in delay-300">
+              <h3 className="text-lg font-semibold text-white mb-6 relative">
+                Our Services
+                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"></span>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Robotics Lab Setup",
+                  "AI Training Programs",
+                  "Industrial Automation",
+                  "Educational Workshops",
+                  "Technical Consulting",
+                  "Research & Development"
+                ].map((service, index) => (
+                  <li key={service} className="text-gray-400 hover:text-blue-400 transition-colors duration-300 cursor-pointer flex items-center space-x-2 group animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                    <Bot className="h-4 w-4 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">{service}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div className="animate-fade-in delay-500">
+              <h3 className="text-lg font-semibold text-white mb-6 relative">
+                Contact Info
+                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"></span>
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3 group">
+                  <Mail className="h-5 w-5 text-blue-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                  <div>
+                    <p className="text-gray-400 group-hover:text-white transition-colors duration-300">Email</p>
+                    <p className="text-white font-medium">contact@vstechhorizon.com</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3 group">
+                  <Phone className="h-5 w-5 text-blue-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                  <div>
+                    <p className="text-gray-400 group-hover:text-white transition-colors duration-300">Phone</p>
+                    <p className="text-white font-medium">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3 group">
+                  <MapPin className="h-5 w-5 text-blue-400 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                  <div>
+                    <p className="text-gray-400 group-hover:text-white transition-colors duration-300">Address</p>
+                    <p className="text-white font-medium">123 Innovation Drive<br />Tech City, TC 12345</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="border-t border-gray-700 pt-8 mt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 animate-fade-in">
+                <p className="text-gray-400">&copy; 2024 VS Tech Horizon Pvt. Ltd. All rights reserved.</p>
+                <div className="flex space-x-6">
+                  <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
+                    Privacy Policy
+                  </button>
+                  <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
+                    Terms of Service
+                  </button>
+                  <button className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
+                    Cookie Policy
+                  </button>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-400 animate-fade-in delay-200">
+                <Heart className="h-4 w-4 text-red-400 animate-pulse" />
+                <span className="text-sm">Made with passion for innovation</span>
+              </div>
             </div>
           </div>
         </div>
