@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,7 +24,10 @@ import {
   Globe,
   Zap,
   Shield,
-  TrendingUp
+  TrendingUp,
+  ExternalLink,
+  Calendar,
+  Target
 } from 'lucide-react';
 
 const Index = () => {
