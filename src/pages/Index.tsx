@@ -44,15 +44,23 @@ import {
   TrendingUp,
   Shield,
   Rocket,
-  Globe
+  Globe,
+  Menu
 } from 'lucide-react';
 
 const Index = () => {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
+  const navigateToPage = (path: string) => {
+    navigate(path);
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -63,34 +71,80 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 group">
               <img 
-                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                src="/lovable-uploads/bf4614f9-4165-4a87-b5e4-9004f19c4109.png" 
                 alt="VS Tech Horizon Logo" 
-                className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
+                className="h-10 w-10 group-hover:scale-110 transition-transform duration-300"
               />
               <span className="text-xl font-bold text-gray-800">VS Tech Horizon</span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex space-x-8">
+              {[
+                { name: 'Home', action: () => scrollToSection('home') },
+                { name: 'About', action: () => navigateToPage('/about') },
+                { name: 'Services', action: () => navigateToPage('/services') },
+                { name: 'Portfolio', action: () => navigateToPage('/portfolio') },
+                { name: 'Contact', action: () => scrollToSection('contact') }
+              ].map((item, index) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  key={item.name}
+                  onClick={item.action}
                   className="text-gray-600 hover:text-blue-600 transition-all duration-300 font-medium relative group animate-fade-in"
                   style={{animationDelay: `${index * 100}ms`}}
                 >
-                  {item}
+                  {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
+
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            </div>
+
+            <Button className="hidden lg:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
               Get Started
             </Button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-4 pt-4">
+                {[
+                  { name: 'Home', action: () => scrollToSection('home') },
+                  { name: 'About', action: () => navigateToPage('/about') },
+                  { name: 'Services', action: () => navigateToPage('/services') },
+                  { name: 'Portfolio', action: () => navigateToPage('/portfolio') },
+                  { name: 'Contact', action: () => scrollToSection('contact') }
+                ].map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={item.action}
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium text-left"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full w-fit">
+                  Get Started
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
+      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
@@ -101,12 +155,20 @@ const Index = () => {
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in">
-              <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                Pioneering the Future of 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 block">
-                  Robotics & AI
-                </span>
-              </h1>
+              {/* Company Logo and Name */}
+              <div className="flex flex-col items-center justify-center mb-8">
+                <img 
+                  src="/lovable-uploads/bf4614f9-4165-4a87-b5e4-9004f19c4109.png" 
+                  alt="VS Tech Horizon Logo" 
+                  className="h-32 w-32 mb-6 animate-scale-in"
+                />
+                <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                    VS Tech Horizon
+                  </span>
+                </h1>
+              </div>
+              
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-300">
                 Transforming education and industry through cutting-edge robotics solutions, 
                 AI innovations, and comprehensive training programs that prepare students for tomorrow's challenges.
@@ -115,7 +177,7 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
-                  onClick={() => scrollToSection('services')}
+                  onClick={() => navigateToPage('/services')}
                 >
                   Explore Our Solutions
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -547,9 +609,9 @@ const Index = () => {
             <div className="space-y-6 animate-fade-in">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                  src="/lovable-uploads/bf4614f9-4165-4a87-b5e4-9004f19c4109.png" 
                   alt="VS Tech Horizon Logo" 
-                  className="h-10 w-auto"
+                  className="h-10 w-10"
                 />
                 <span className="text-xl font-bold">VS Tech Horizon</span>
               </div>
