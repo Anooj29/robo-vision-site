@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -44,7 +43,8 @@ import {
   TrendingUp,
   Shield,
   Rocket,
-  Globe
+  Globe,
+  ExternalLink
 } from 'lucide-react';
 
 const Index = () => {
@@ -63,11 +63,11 @@ const Index = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 group">
               <img 
-                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
                 alt="VS Tech Horizon Logo" 
                 className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
               />
-              <span className="text-xl font-bold text-gray-800">VS Tech Horizon</span>
+              <span className="text-xl font-bold text-gray-800" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
             </div>
             <div className="hidden md:flex space-x-8">
               {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
@@ -101,12 +101,22 @@ const Index = () => {
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in">
-              <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              <div className="flex justify-center items-center mb-8">
+                <img 
+                  src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
+                  alt="VS Tech Horizon Logo" 
+                  className="h-20 w-auto mr-4"
+                />
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900" style={{fontFamily: 'Times, serif'}}>
+                  VS Tech Horizon Pvt. Ltd.
+                </h1>
+              </div>
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Pioneering the Future of 
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 block">
                   Robotics & AI
                 </span>
-              </h1>
+              </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-300">
                 Transforming education and industry through cutting-edge robotics solutions, 
                 AI innovations, and comprehensive training programs that prepare students for tomorrow's challenges.
@@ -320,6 +330,106 @@ const Index = () => {
                     Learn More
                   </Button>
                 </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
+              Our Portfolio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">
+              Explore our successful implementations and innovative projects across educational institutions
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Tech High School - Complete Robotics Lab",
+                description: "Implementation of a state-of-the-art robotics laboratory with 30 workstations, complete curriculum development, and teacher training program.",
+                image: "photo-1605810230434-7631ac76ec81",
+                category: "Education",
+                impact: "300% increase in STEM enrollment",
+                link: "#"
+              },
+              {
+                title: "State University - AI Research Center",
+                description: "Development of an advanced AI training facility with machine learning capabilities, computer vision systems, and neural network laboratories.",
+                image: "photo-1518770660439-4636190af475",
+                category: "Research",
+                impact: "50+ AI specialists trained",
+                link: "#"
+              },
+              {
+                title: "Manufacturing Plant - Automation System",
+                description: "Custom industrial automation solution with intelligent robotics for quality control and process optimization in manufacturing environment.",
+                image: "photo-1581091226825-a6a2a5aee158",
+                category: "Industry",
+                impact: "40% efficiency improvement",
+                link: "#"
+              },
+              {
+                title: "Lincoln College - STEM Workshop Series",
+                description: "Comprehensive workshop series covering robotics fundamentals, AI applications, and hands-on project development for students and faculty.",
+                image: "photo-1488590528505-98d2b5aba04b",
+                category: "Training",
+                impact: "500+ students trained",
+                link: "#"
+              },
+              {
+                title: "Innovation Hub - Smart City Project",
+                description: "Development of smart city solutions using IoT sensors, AI analytics, and robotic systems for urban planning and management.",
+                image: "photo-1526374965328-7f61d4dc18c5",
+                category: "Smart City",
+                impact: "City-wide implementation",
+                link: "#"
+              },
+              {
+                title: "Community College - Robotics Competition",
+                description: "Organization and technical support for annual robotics competition, including robot design, programming challenges, and innovation awards.",
+                image: "photo-1461749280684-dccba630e2f6",
+                category: "Competition",
+                impact: "200+ participating teams",
+                link: "#"
+              }
+            ].map((project, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-500 group overflow-hidden animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-600 leading-relaxed mb-4">
+                    {project.description}
+                  </CardDescription>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <TrendingUp className="h-4 w-4 text-green-500" />
+                      <span className="text-sm text-green-600 font-medium">{project.impact}</span>
+                    </div>
+                    <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      View Details
+                    </Button>
+                  </div>
+                </CardHeader>
               </Card>
             ))}
           </div>
@@ -547,11 +657,11 @@ const Index = () => {
             <div className="space-y-6 animate-fade-in">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                  src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
                   alt="VS Tech Horizon Logo" 
                   className="h-10 w-auto"
                 />
-                <span className="text-xl font-bold">VS Tech Horizon</span>
+                <span className="text-xl font-bold" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
               </div>
               <p className="text-gray-400 leading-relaxed">
                 Pioneering the future of robotics and AI education through innovative solutions and cutting-edge technology.
@@ -583,6 +693,7 @@ const Index = () => {
                 {[
                   { name: "About Us", action: () => scrollToSection('about') },
                   { name: "Services", action: () => scrollToSection('services') },
+                  { name: "Portfolio", action: () => scrollToSection('portfolio') },
                   { name: "Contact", action: () => scrollToSection('contact') },
                   { name: "Robotics Lab", action: () => navigate('/services/robotics-lab') },
                   { name: "AI Training", action: () => navigate('/services/ai-training') }
