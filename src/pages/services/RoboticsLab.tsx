@@ -23,9 +23,9 @@ const RoboticsLab = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200 shadow-sm">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
@@ -34,7 +34,7 @@ const RoboticsLab = () => {
                 alt="VS Tech Horizon Logo" 
                 className="h-10 w-auto"
               />
-              <span className="text-xl font-bold text-gray-800" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
+              <span className="text-xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
             </div>
             <div className="flex items-center space-x-4">
               <Button 
@@ -45,7 +45,7 @@ const RoboticsLab = () => {
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back to Home</span>
               </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-full">
                 Contact Us
               </Button>
             </div>

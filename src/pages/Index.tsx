@@ -56,9 +56,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200 shadow-sm animate-fade-in">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border shadow-sm animate-fade-in">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 group">
@@ -67,22 +67,22 @@ const Index = () => {
                 alt="VS Tech Horizon Logo" 
                 className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
               />
-              <span className="text-xl font-bold text-gray-800" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
+              <span className="text-xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
             </div>
             <div className="hidden md:flex space-x-8">
               {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-gray-600 hover:text-blue-600 transition-all duration-300 font-medium relative group animate-fade-in"
+                  className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium relative group animate-fade-in"
                   style={{animationDelay: `${index * 100}ms`}}
                 >
                   {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-full">
               Get Started
             </Button>
           </div>
@@ -90,12 +90,12 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-background to-card relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-300"></div>
-          <div className="absolute -bottom-32 left-1/2 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-700"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-accent/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-300"></div>
+          <div className="absolute -bottom-32 left-1/2 w-72 h-72 bg-muted/40 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-700"></div>
         </div>
         
         <div className="container mx-auto text-center relative z-10">
@@ -107,24 +107,24 @@ const Index = () => {
                   alt="VS Tech Horizon Logo" 
                   className="h-20 w-auto mr-4"
                 />
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900" style={{fontFamily: 'Times, serif'}}>
+                <h1 className="text-4xl md:text-5xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>
                   VS Tech Horizon Pvt. Ltd.
                 </h1>
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
                 Pioneering the Future of 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
                   Robotics & AI
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-300">
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-300">
                 Transforming education and industry through cutting-edge robotics solutions, 
                 AI innovations, and comprehensive training programs that prepare students for tomorrow's challenges.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-500">
                 <Button 
                   size="lg" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
                   onClick={() => scrollToSection('services')}
                 >
                   Explore Our Solutions
@@ -133,7 +133,7 @@ const Index = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 px-8 py-4 text-lg rounded-full group"
+                  className="border-2 border-border hover:border-primary text-muted-foreground hover:text-primary px-8 py-4 text-lg rounded-full group"
                 >
                   <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   Watch Demo
@@ -145,13 +145,13 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-card">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-card-foreground mb-4 animate-fade-in">
               Why Choose VS Tech Horizon?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
               We combine cutting-edge technology with practical education solutions to create meaningful impact
             </p>
           </div>
@@ -179,15 +179,15 @@ const Index = () => {
             ].map((feature, index) => (
               <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-500 group animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
                 <CardHeader className="pb-4">
-                  <div className="mx-auto mb-4 p-4 bg-gray-50 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300">
+                  <div className="mx-auto mb-4 p-4 bg-muted rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300">
                     <feature.icon className={`h-8 w-8 ${feature.color}`} />
                   </div>
-                  <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <CardTitle className="text-xl text-card-foreground group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                  <CardDescription className="text-muted-foreground group-hover:text-card-foreground transition-colors duration-300">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -198,14 +198,14 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section id="about" className="py-20 px-4 bg-gradient-to-br from-muted to-accent">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Transforming Education Through Innovation
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 At VS Tech Horizon, we believe that the future belongs to those who understand technology. 
                 Our mission is to bridge the gap between cutting-edge robotics and practical education, 
                 preparing the next generation for a technology-driven world.
@@ -219,35 +219,35 @@ const Index = () => {
                 ].map((point, index) => (
                   <div key={index} className="flex items-center space-x-3 animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
                     <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">{point}</span>
+                    <span className="text-muted-foreground">{point}</span>
                   </div>
                 ))}
               </div>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
                 Learn More About Us
               </Button>
             </div>
             <div className="relative animate-fade-in delay-300">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white rounded-2xl p-6">
+              <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 shadow-2xl">
+                <div className="bg-card rounded-2xl p-6">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Bot className="h-6 w-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                        <Bot className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900">AI Robot Assistant</h3>
-                        <p className="text-sm text-gray-500">Teaching Mode Active</p>
+                        <h3 className="font-semibold text-card-foreground">AI Robot Assistant</h3>
+                        <p className="text-sm text-muted-foreground">Teaching Mode Active</p>
                       </div>
                     </div>
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   </div>
                   <div className="space-y-3">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <p className="text-sm text-gray-700">Processing student query...</p>
+                    <div className="bg-muted rounded-lg p-3">
+                      <p className="text-sm text-muted-foreground">Processing student query...</p>
                     </div>
-                    <div className="bg-blue-50 rounded-lg p-3">
-                      <p className="text-sm text-blue-700">Generating personalized learning path</p>
+                    <div className="bg-primary/10 rounded-lg p-3">
+                      <p className="text-sm text-primary">Generating personalized learning path</p>
                     </div>
                   </div>
                 </div>
@@ -258,13 +258,13 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-white">
+      <section id="services" className="py-20 px-4 bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in">
               Our Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
               Comprehensive robotics and AI solutions designed for educational excellence
             </p>
           </div>
@@ -307,10 +307,10 @@ const Index = () => {
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </div>
-                  <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">
+                  <CardTitle className="text-xl text-card-foreground group-hover:text-primary transition-colors duration-300 mb-2">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 leading-relaxed">
+                  <CardDescription className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
@@ -319,12 +319,12 @@ const Index = () => {
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <span className="text-sm text-muted-foreground">{feature}</span>
                       </div>
                     ))}
                   </div>
                   <Button 
-                    className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-full"
+                    className="w-full bg-foreground hover:bg-foreground/90 text-background rounded-full"
                     onClick={() => navigate(service.link)}
                   >
                     Learn More
@@ -337,13 +337,13 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section id="portfolio" className="py-20 px-4 bg-gradient-to-br from-muted to-accent">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in">
               Our Portfolio
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
               Explore our successful implementations and innovative projects across educational institutions
             </p>
           </div>
