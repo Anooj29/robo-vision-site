@@ -2,165 +2,155 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowLeft, Brain, Users, Target, CheckCircle, Clock, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  Brain, 
-  Cpu, 
-  Users, 
-  BookOpen, 
-  Award,
-  CheckCircle,
-  Star,
-  Play,
-  ArrowRight,
-  Mail,
-  Phone,
-  Zap,
-  Target,
-  TrendingUp
-} from 'lucide-react';
 
 const AITraining = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border shadow-sm">
+      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
-                alt="VS Tech Horizon Logo" 
-                className="h-10 w-auto"
-              />
-              <span className="text-xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
-            </div>
-            <div className="flex items-center space-x-4">
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/')}
-                className="flex items-center space-x-2"
+                className="text-gray-300 hover:text-blue-400 p-2"
               >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Back to Home</span>
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Back to Home
               </Button>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-full">
-                Contact Us
-              </Button>
+            </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
+                alt="VS Tech Horizon Logo" 
+                className="h-8 w-auto"
+              />
+              <span className="text-white font-bold">VS Tech Horizon</span>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-300"></div>
-        </div>
-        
-        <div className="container mx-auto text-center relative z-10">
+      <section className="pt-24 pb-16 px-4">
+        <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Advanced 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-                  AI Training
-                </span>
-                Programs
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Comprehensive artificial intelligence training programs designed to prepare students and professionals 
-                for the future of technology with hands-on robotics integration.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button 
-                  size="lg" 
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
-                >
-                  Enroll Now
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-gray-300 hover:border-purple-600 text-gray-700 hover:text-purple-600 px-8 py-4 text-lg rounded-full group"
-                >
-                  <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                  View Curriculum
-                </Button>
+            <div className="flex justify-center mb-8">
+              <div className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-purple-400/30">
+                <Brain className="h-12 w-12 text-purple-400" />
               </div>
             </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              AI Training <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Programs</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Comprehensive artificial intelligence workshops with hands-on robotics integration and cutting-edge machine learning techniques.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Training Programs Section */}
-      <section className="py-20 px-4 bg-white">
+      {/* Program Overview */}
+      <section className="py-16 px-4 bg-gray-800/30">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Training Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our comprehensive range of AI training programs tailored for different skill levels
-            </p>
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6">Master AI & Machine Learning</h2>
+              <p className="text-gray-300 mb-6">
+                Our AI training programs combine theoretical knowledge with practical robotics applications, giving participants real-world experience in artificial intelligence.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-4 bg-purple-600/20 rounded-lg">
+                  <div className="text-2xl font-bold text-purple-400">50+</div>
+                  <div className="text-gray-300">Hours of Training</div>
+                </div>
+                <div className="text-center p-4 bg-blue-600/20 rounded-lg">
+                  <div className="text-2xl font-bold text-blue-400">15+</div>
+                  <div className="text-gray-300">AI Projects</div>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              {[
+                {
+                  title: "Machine Learning Fundamentals",
+                  description: "Core concepts, algorithms, and practical implementations",
+                  icon: Brain
+                },
+                {
+                  title: "Neural Networks & Deep Learning",
+                  description: "Building and training neural networks for robotics applications",
+                  icon: Target
+                },
+                {
+                  title: "Computer Vision",
+                  description: "Image recognition and processing for robotic systems",
+                  icon: Users
+                }
+              ].map((module, index) => (
+                <div key={index} className="flex space-x-4 p-4 bg-gray-800/60 rounded-lg hover:bg-gray-700/60 transition-all duration-300">
+                  <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg">
+                    <module.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{module.title}</h3>
+                    <p className="text-gray-300 text-sm">{module.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          
+
+          {/* Training Tracks */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: Brain,
-                title: "Machine Learning Fundamentals",
-                description: "Introduction to ML algorithms, data processing, and model training with practical robotics applications.",
-                duration: "8 weeks",
-                level: "Beginner",
-                color: "text-blue-600",
-                gradient: "from-blue-500 to-cyan-500"
+                title: "Beginner Track",
+                duration: "4 Weeks",
+                level: "Entry Level",
+                topics: ["AI Basics", "Python Programming", "Simple ML Models", "Robot Control"]
               },
               {
-                icon: Zap,
-                title: "Deep Learning & Neural Networks",
-                description: "Advanced neural network architectures, computer vision, and natural language processing integration.",
-                duration: "12 weeks",
+                title: "Intermediate Track", 
+                duration: "8 Weeks",
                 level: "Intermediate",
-                color: "text-purple-600",
-                gradient: "from-purple-500 to-pink-500"
+                topics: ["Advanced ML", "Neural Networks", "Computer Vision", "AI-Robot Integration"]
               },
               {
-                icon: Target,
-                title: "AI in Robotics Applications",
-                description: "Specialized program focusing on AI implementation in robotic systems and autonomous decision making.",
-                duration: "16 weeks",
+                title: "Expert Track",
+                duration: "12 Weeks", 
                 level: "Advanced",
-                color: "text-green-600",
-                gradient: "from-green-500 to-emerald-500"
+                topics: ["Deep Learning", "Reinforcement Learning", "Custom AI Models", "Research Projects"]
               }
-            ].map((program, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-500 group">
-                <div className={`h-2 bg-gradient-to-r ${program.gradient}`}></div>
-                <CardHeader className="text-center pb-4">
-                  <div className={`mx-auto mb-4 p-4 bg-gradient-to-br ${program.gradient} rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300`}>
-                    <program.icon className="h-8 w-8 text-white" />
+            ].map((track, index) => (
+              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 transition-all duration-300">
+                <CardHeader className="text-center">
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <Clock className="h-5 w-5 text-purple-400" />
+                    <span className="text-purple-400 font-semibold">{track.duration}</span>
                   </div>
-                  <CardTitle className="text-2xl text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
-                    {program.title}
-                  </CardTitle>
-                  <div className="flex justify-center space-x-4 text-sm text-gray-500 mt-2">
-                    <span>{program.duration}</span>
-                    <span>•</span>
-                    <span>{program.level}</span>
-                  </div>
+                  <CardTitle className="text-xl text-white">{track.title}</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    <Award className="h-4 w-4 inline mr-1" />
+                    {track.level}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
-                    {program.description}
-                  </CardDescription>
-                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-full">
-                    Learn More
+                  <ul className="space-y-2">
+                    {track.topics.map((topic, i) => (
+                      <li key={i} className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                        <span className="text-gray-300">{topic}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="w-full mt-6 bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700">
+                    Enroll Now
                   </Button>
                 </CardContent>
               </Card>
@@ -169,125 +159,18 @@ const AITraining = () => {
         </div>
       </section>
 
-      {/* Curriculum Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Comprehensive Curriculum
-            </h2>
-            <p className="text-xl text-gray-600">
-              Our AI training curriculum covers all essential aspects of artificial intelligence
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl text-gray-900 flex items-center">
-                  <Brain className="mr-3 h-6 w-6 text-purple-600" />
-                  Core AI Concepts
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    "Introduction to Artificial Intelligence",
-                    "Machine Learning Algorithms",
-                    "Deep Learning and Neural Networks",
-                    "Computer Vision and Image Processing",
-                    "Natural Language Processing",
-                    "Reinforcement Learning"
-                  ].map((topic, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{topic}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl text-gray-900 flex items-center">
-                  <Cpu className="mr-3 h-6 w-6 text-blue-600" />
-                  Practical Applications
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    "Robotics Integration Projects",
-                    "Real-world Problem Solving",
-                    "Industry Case Studies",
-                    "Hands-on Coding Sessions",
-                    "Team Collaboration Projects",
-                    "Portfolio Development"
-                  ].map((application, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{application}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stats */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "2000+", label: "Students Trained", icon: Users },
-              { number: "50+", label: "AI Specialists", icon: Brain },
-              { number: "95%", label: "Job Placement Rate", icon: TrendingUp },
-              { number: "25+", label: "Industry Partners", icon: Award }
-            ].map((stat, index) => (
-              <div key={index} className="animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                <div className="mb-4">
-                  <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-80" />
-                  <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                  <div className="text-lg opacity-90">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-purple-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Start Your AI Journey Today
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Join our comprehensive AI training programs and become an expert in artificial intelligence
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl flex items-center"
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Enroll Now
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-full flex items-center"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Get Info
-              </Button>
-            </div>
-          </div>
+      {/* Contact CTA */}
+      <section className="py-16 px-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Start Your AI Journey Today</h2>
+          <p className="text-xl text-gray-300 mb-8">Join hundreds of students who have mastered AI through our programs</p>
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
+            onClick={() => navigate('/#contact')}
+          >
+            Get Started
+          </Button>
         </div>
       </section>
     </div>

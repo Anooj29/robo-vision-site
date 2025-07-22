@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,326 +9,227 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Bot, 
   Brain, 
-  Award, 
-  Medal, 
   Users, 
   School, 
-  Lightbulb, 
-  Target, 
-  Heart,
   ArrowRight,
   Mail,
   Phone,
   MapPin,
-  Star,
   ChevronRight,
   Cpu,
-  Zap,
   Cog,
-  Settings,
-  Trophy,
-  Crown,
-  Sparkles,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  X,
+  Menu,
   Play,
   CheckCircle,
-  Quote,
-  Calendar,
-  Clock,
-  User,
-  MessageSquare,
-  TrendingUp,
-  Shield,
-  Rocket,
+  Award,
   Globe,
-  ExternalLink
+  Zap,
+  Shield,
+  TrendingUp
 } from 'lucide-react';
 
 const Index = () => {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
+  const navigateToPage = (path: string) => {
+    navigate(path);
+    setMobileMenuOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md z-50 border-b border-border shadow-sm animate-fade-in">
-        <div className="container mx-auto px-4 py-4">
+    <div className="min-h-screen bg-black text-white">
+      {/* Navigation - Boston Dynamics style */}
+      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gray-800">
+        <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 group">
               <img 
-                src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
+                src="/lovable-uploads/bf4614f9-4165-4a87-b5e4-9004f19c4109.png" 
                 alt="VS Tech Horizon Logo" 
-                className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
+                className="h-8 w-8 group-hover:scale-110 transition-transform duration-300"
               />
-              <span className="text-xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
+              <span className="text-xl font-bold text-white">VS TECH HORIZON</span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex space-x-8">
+              {[
+                { name: 'HOME', action: () => scrollToSection('home') },
+                { name: 'ABOUT', action: () => navigateToPage('/about') },
+                { name: 'SERVICES', action: () => navigateToPage('/services') },
+                { name: 'PORTFOLIO', action: () => navigateToPage('/portfolio') },
+                { name: 'CONTACT', action: () => scrollToSection('contact') }
+              ].map((item, index) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium relative group animate-fade-in"
+                  key={item.name}
+                  onClick={item.action}
+                  className="text-gray-300 hover:text-white transition-all duration-300 font-medium text-sm tracking-wider relative group"
                   style={{animationDelay: `${index * 100}ms`}}
                 >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </div>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-full">
-              Get Started
-            </Button>
+
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-white hover:bg-gray-800"
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            </div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden mt-4 pb-4 border-t border-gray-800">
+              <div className="flex flex-col space-y-4 pt-4">
+                {[
+                  { name: 'HOME', action: () => scrollToSection('home') },
+                  { name: 'ABOUT', action: () => navigateToPage('/about') },
+                  { name: 'SERVICES', action: () => navigateToPage('/services') },
+                  { name: 'PORTFOLIO', action: () => navigateToPage('/portfolio') },
+                  { name: 'CONTACT', action: () => scrollToSection('contact') }
+                ].map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={item.action}
+                    className="text-gray-300 hover:text-white transition-colors duration-300 font-medium text-left text-sm tracking-wider"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-background to-card relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-accent/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-300"></div>
-          <div className="absolute -bottom-32 left-1/2 w-72 h-72 bg-muted/40 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-700"></div>
+      {/* Hero Section - Boston Dynamics style */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video/Animation Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_50%)]"></div>
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse delay-500"></div>
         </div>
         
-        <div className="container mx-auto text-center relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <div className="animate-fade-in">
-              <div className="flex justify-center items-center mb-8">
-                <img 
-                  src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
-                  alt="VS Tech Horizon Logo" 
-                  className="h-20 w-auto mr-4"
-                />
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground" style={{fontFamily: 'Times, serif'}}>
-                  VS Tech Horizon Pvt. Ltd.
-                </h1>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Pioneering the Future of 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
-                  Robotics & AI
-                </span>
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-300">
-                Transforming education and industry through cutting-edge robotics solutions, 
-                AI innovations, and comprehensive training programs that prepare students for tomorrow's challenges.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-500">
-                <Button 
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
-                  onClick={() => scrollToSection('services')}
-                >
-                  Explore Our Solutions
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-2 border-border hover:border-primary text-muted-foreground hover:text-primary px-8 py-4 text-lg rounded-full group"
-                >
-                  <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
-                  Watch Demo
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-card">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-card-foreground mb-4 animate-fade-in">
-              Why Choose VS Tech Horizon?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
-              We combine cutting-edge technology with practical education solutions to create meaningful impact
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              THE FUTURE OF
+              <br />
+              <span className="text-blue-500">ROBOTICS EDUCATION</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light">
+              Transforming learning through advanced robotics solutions, AI innovation, 
+              and cutting-edge technology integration.
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Trusted by 100+ Institutions",
-                description: "Our proven track record speaks for itself with successful implementations across educational institutions worldwide.",
-                color: "text-green-600"
-              },
-              {
-                icon: Rocket,
-                title: "Cutting-Edge Technology",
-                description: "Stay ahead with the latest in robotics and AI technology, ensuring your students learn with tomorrow's tools today.",
-                color: "text-blue-600"
-              },
-              {
-                icon: Users,
-                title: "Expert Support Team",
-                description: "Dedicated support from our team of robotics engineers and education specialists throughout your journey.",
-                color: "text-purple-600"
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-500 group animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                <CardHeader className="pb-4">
-                  <div className="mx-auto mb-4 p-4 bg-muted rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className={`h-8 w-8 ${feature.color}`} />
-                  </div>
-                  <CardTitle className="text-xl text-card-foreground group-hover:text-primary transition-colors duration-300">
-                    {feature.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-muted-foreground group-hover:text-card-foreground transition-colors duration-300">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-gradient-to-br from-muted to-accent">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Transforming Education Through Innovation
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                At VS Tech Horizon, we believe that the future belongs to those who understand technology. 
-                Our mission is to bridge the gap between cutting-edge robotics and practical education, 
-                preparing the next generation for a technology-driven world.
-              </p>
-              <div className="space-y-4 mb-8">
-                {[
-                  "Award-winning robotics education programs",
-                  "Industry-leading AI training curriculum",
-                  "Hands-on learning with real-world applications",
-                  "Comprehensive support and ongoing development"
-                ].map((point, index) => (
-                  <div key={index} className="flex items-center space-x-3 animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
-                    <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                    <span className="text-muted-foreground">{point}</span>
-                  </div>
-                ))}
-              </div>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
-                Learn More About Us
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium tracking-wide group border-0"
+                onClick={() => navigateToPage('/services')}
+              >
+                EXPLORE SOLUTIONS
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-gray-600 text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-medium tracking-wide group bg-transparent"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                WATCH DEMO
               </Button>
             </div>
-            <div className="relative animate-fade-in delay-300">
-              <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 shadow-2xl">
-                <div className="bg-card rounded-2xl p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                        <Bot className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-card-foreground">AI Robot Assistant</h3>
-                        <p className="text-sm text-muted-foreground">Teaching Mode Active</p>
-                      </div>
-                    </div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="bg-muted rounded-lg p-3">
-                      <p className="text-sm text-muted-foreground">Processing student query...</p>
-                    </div>
-                    <div className="bg-primary/10 rounded-lg p-3">
-                      <p className="text-sm text-primary">Generating personalized learning path</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-background">
+      {/* Products/Services Section - Boston Dynamics style */}
+      <section className="py-24 px-6 bg-gray-900">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in">
-              Our Services
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              OUR SOLUTIONS
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
-              Comprehensive robotics and AI solutions designed for educational excellence
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Advanced robotics and AI solutions designed for the next generation of learners
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-12">
             {[
               {
                 icon: School,
-                title: "Robotics Lab Setup",
-                description: "Complete laboratory installation with cutting-edge robots, sensors, and programming environments tailored for educational excellence.",
-                features: ["Hardware Setup", "Software Integration", "Curriculum Design", "Teacher Training"],
-                link: "/services/robotics-lab",
-                gradient: "from-blue-500 to-cyan-500"
+                title: "ROBOTICS LAB",
+                subtitle: "Complete Educational Setup",
+                description: "State-of-the-art robotics laboratories with cutting-edge hardware, software integration, and comprehensive curriculum design.",
+                image: "/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png",
+                link: "/services/robotics-lab"
               },
               {
                 icon: Brain,
-                title: "AI Training Programs",
-                description: "Comprehensive artificial intelligence workshops with hands-on robotics integration and machine learning applications.",
-                features: ["Machine Learning", "Neural Networks", "Computer Vision", "Practical Projects"],
-                link: "/services/ai-training",
-                gradient: "from-purple-500 to-pink-500"
+                title: "AI TRAINING",
+                subtitle: "Advanced Learning Programs",
+                description: "Comprehensive artificial intelligence workshops featuring machine learning, neural networks, and hands-on robotics integration.",
+                image: "/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png",
+                link: "/services/ai-training"
               },
               {
                 icon: Cog,
-                title: "Industrial Automation",
-                description: "Custom intelligent robotics solutions for manufacturing optimization and quality control systems.",
-                features: ["Process Automation", "Quality Control", "System Integration", "Maintenance Support"],
-                link: "/services/industrial-automation",
-                gradient: "from-orange-500 to-red-500"
+                title: "INDUSTRIAL AUTOMATION",
+                subtitle: "Smart Manufacturing Solutions",
+                description: "Custom intelligent robotics solutions for manufacturing optimization, quality control, and process automation.",
+                image: "/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png",
+                link: "/services/industrial-automation"
               }
             ].map((service, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-500 group overflow-hidden animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                <div className={`h-2 bg-gradient-to-r ${service.gradient}`}></div>
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 bg-gradient-to-br ${service.gradient} rounded-xl group-hover:scale-110 transition-transform duration-300`}>
-                      <service.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
+              <Card key={index} className="bg-black border-gray-800 hover:border-blue-500 transition-all duration-500 group overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-4">
+                    <service.icon className="h-8 w-8 text-blue-500" />
                   </div>
-                  <CardTitle className="text-xl text-card-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl text-white font-bold tracking-wide">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-muted-foreground leading-relaxed">
-                    {service.description}
+                  <CardDescription className="text-blue-400 font-medium">
+                    {service.subtitle}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
                   <Button 
-                    className="w-full bg-foreground hover:bg-foreground/90 text-background rounded-full"
+                    variant="outline"
+                    className="w-full border-gray-700 text-white hover:bg-blue-600 hover:border-blue-600 bg-transparent"
                     onClick={() => navigate(service.link)}
                   >
-                    Learn More
+                    LEARN MORE
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
@@ -336,189 +238,68 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 px-4 bg-gradient-to-br from-muted to-accent">
+      {/* Stats Section - Boston Dynamics style */}
+      <section className="py-24 px-6 bg-black border-y border-gray-800">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in">
-              Our Portfolio
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in delay-200">
-              Explore our successful implementations and innovative projects across educational institutions
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-12 text-center">
             {[
-              {
-                title: "Tech High School - Complete Robotics Lab",
-                description: "Implementation of a state-of-the-art robotics laboratory with 30 workstations, complete curriculum development, and teacher training program.",
-                image: "photo-1605810230434-7631ac76ec81",
-                category: "Education",
-                impact: "300% increase in STEM enrollment",
-                link: "#"
-              },
-              {
-                title: "State University - AI Research Center",
-                description: "Development of an advanced AI training facility with machine learning capabilities, computer vision systems, and neural network laboratories.",
-                image: "photo-1518770660439-4636190af475",
-                category: "Research",
-                impact: "50+ AI specialists trained",
-                link: "#"
-              },
-              {
-                title: "Manufacturing Plant - Automation System",
-                description: "Custom industrial automation solution with intelligent robotics for quality control and process optimization in manufacturing environment.",
-                image: "photo-1581091226825-a6a2a5aee158",
-                category: "Industry",
-                impact: "40% efficiency improvement",
-                link: "#"
-              },
-              {
-                title: "Lincoln College - STEM Workshop Series",
-                description: "Comprehensive workshop series covering robotics fundamentals, AI applications, and hands-on project development for students and faculty.",
-                image: "photo-1488590528505-98d2b5aba04b",
-                category: "Training",
-                impact: "500+ students trained",
-                link: "#"
-              },
-              {
-                title: "Innovation Hub - Smart City Project",
-                description: "Development of smart city solutions using IoT sensors, AI analytics, and robotic systems for urban planning and management.",
-                image: "photo-1526374965328-7f61d4dc18c5",
-                category: "Smart City",
-                impact: "City-wide implementation",
-                link: "#"
-              },
-              {
-                title: "Community College - Robotics Competition",
-                description: "Organization and technical support for annual robotics competition, including robot design, programming challenges, and innovation awards.",
-                image: "photo-1461749280684-dccba630e2f6",
-                category: "Competition",
-                impact: "200+ participating teams",
-                link: "#"
-              }
-            ].map((project, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-500 group overflow-hidden animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=800&q=80`}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 leading-relaxed mb-4">
-                    {project.description}
-                  </CardDescription>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <TrendingUp className="h-4 w-4 text-green-500" />
-                      <span className="text-sm text-green-600 font-medium">{project.impact}</span>
-                    </div>
-                    <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      View Details
-                    </Button>
-                  </div>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "100+", label: "Educational Institutions", icon: School },
-              { number: "5000+", label: "Students Trained", icon: Users },
-              { number: "50+", label: "Expert Trainers", icon: User },
-              { number: "95%", label: "Success Rate", icon: TrendingUp }
+              { number: "100+", label: "INSTITUTIONS", description: "Educational partners worldwide" },
+              { number: "5000+", label: "STUDENTS", description: "Successfully trained" },
+              { number: "50+", label: "EXPERTS", description: "Industry professionals" },
+              { number: "95%", label: "SUCCESS RATE", description: "Project completion" }
             ].map((stat, index) => (
-              <div key={index} className="animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
-                <div className="mb-4">
-                  <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-80" />
-                  <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                  <div className="text-lg opacity-90">{stat.label}</div>
-                </div>
+              <div key={index} className="group">
+                <div className="text-4xl md:text-5xl font-bold text-blue-500 mb-2">{stat.number}</div>
+                <div className="text-lg font-bold text-white mb-2 tracking-wider">{stat.label}</div>
+                <div className="text-gray-400 text-sm">{stat.description}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      {/* Technology Section */}
+      <section className="py-24 px-6 bg-gray-900">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
-              What Our Clients Say
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              CUTTING-EDGE TECHNOLOGY
             </h2>
-            <p className="text-xl text-gray-600 animate-fade-in delay-200">
-              Success stories from our educational partners
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Powered by the latest advancements in robotics and artificial intelligence
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Dr. Sarah Johnson",
-                role: "Principal, Tech High School",
-                content: "VS Tech Horizon transformed our STEM program completely. The robotics lab they set up has increased student engagement by 300% and our graduates are significantly better prepared for engineering careers.",
-                image: "SJ",
-                rating: 5
+                icon: Shield,
+                title: "RELIABLE & SECURE",
+                description: "Industrial-grade security protocols and fail-safe mechanisms ensure safe learning environments."
               },
               {
-                name: "Prof. Michael Chen",
-                role: "Dean of Engineering, State University",
-                content: "Their AI training programs are exceptional. The hands-on approach and industry-relevant curriculum have significantly improved our students' job placement rates in tech companies.",
-                image: "MC",
-                rating: 5
+                icon: Zap,
+                title: "HIGH PERFORMANCE",
+                description: "Advanced processing capabilities delivering real-time responses and seamless user experiences."
               },
               {
-                name: "Amanda Rodriguez",
-                role: "STEM Coordinator, Lincoln College",
-                content: "The workshops conducted by VS Tech Horizon are always engaging and informative. Both teachers and students leave with practical skills they can immediately apply in real-world scenarios.",
-                image: "AR",
-                rating: 5
+                icon: Globe,
+                title: "GLOBAL CONNECTIVITY",
+                description: "Cloud-integrated systems enabling remote learning and collaborative robotics projects worldwide."
               }
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-500 group bg-white animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
+            ].map((feature, index) => (
+              <Card key={index} className="bg-black border-gray-800 hover:border-blue-500 transition-all duration-300 text-center">
                 <CardHeader>
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-lg">
-                        {testimonial.image}
-                      </span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-gray-500">{testimonial.role}</p>
-                      <div className="flex space-x-1 mt-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                        ))}
-                      </div>
-                    </div>
+                  <div className="mx-auto mb-4 p-4 bg-gray-800 rounded-full w-fit">
+                    <feature.icon className="h-8 w-8 text-blue-500" />
                   </div>
-                  <Quote className="h-8 w-8 text-blue-200 mb-2" />
-                  <CardDescription className="text-gray-700 italic leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
-                    "{testimonial.content}"
-                  </CardDescription>
+                  <CardTitle className="text-xl text-white font-bold tracking-wide">
+                    {feature.title}
+                  </CardTitle>
                 </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400">{feature.description}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -526,30 +307,30 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-blue-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto text-center relative z-10">
+      <section className="py-24 px-6 bg-black border-t border-gray-800">
+        <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              Ready to Transform Your Institution?
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+              READY TO INNOVATE?
             </h2>
-            <p className="text-xl mb-8 opacity-90 animate-fade-in delay-200">
-              Join the robotics revolution and prepare your students for the future of technology
+            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+              Transform your institution with cutting-edge robotics and AI solutions. 
+              Join the future of education today.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-400">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 size="lg" 
-                className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium tracking-wide"
                 onClick={() => scrollToSection('contact')}
               >
-                Get Started Today
+                GET STARTED
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-full"
+                className="border-2 border-gray-600 text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-medium tracking-wide bg-transparent"
               >
-                Schedule a Demo
+                SCHEDULE DEMO
               </Button>
             </div>
           </div>
@@ -557,90 +338,86 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-white">
+      <section id="contact" className="py-24 px-6 bg-gray-900">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
-              Get In Touch
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              CONTACT US
             </h2>
-            <p className="text-xl text-gray-600 animate-fade-in delay-200">
-              Ready to transform your educational institution with cutting-edge technology?
+            <p className="text-xl text-gray-400">
+              Ready to transform your educational institution?
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="animate-fade-in">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
+          <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-8 tracking-wide">GET IN TOUCH</h3>
               <div className="space-y-6">
                 {[
                   {
                     icon: Mail,
-                    title: "Email",
+                    title: "EMAIL",
                     content: "contact@vstechhorizon.com",
-                    subtitle: "We'll respond within 24 hours"
+                    subtitle: "Response within 24 hours"
                   },
                   {
                     icon: Phone,
-                    title: "Phone",
+                    title: "PHONE",
                     content: "+1 (555) 123-4567",
                     subtitle: "Mon-Fri, 9AM-6PM EST"
                   },
                   {
                     icon: MapPin,
-                    title: "Address",
+                    title: "LOCATION",
                     content: "123 Innovation Drive, Tech City, TC 12345",
-                    subtitle: "Visit our state-of-the-art facility"
+                    subtitle: "Visit our facility"
                   }
                 ].map((contact, index) => (
-                  <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-all duration-300 group animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="p-3 bg-blue-50 rounded-xl group-hover:bg-blue-100 transition-colors duration-300">
-                          <contact.icon className="h-6 w-6 text-blue-600" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 mb-1">{contact.title}</h4>
-                          <p className="text-gray-800 font-medium mb-1">{contact.content}</p>
-                          <p className="text-sm text-gray-500">{contact.subtitle}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div key={index} className="flex items-start space-x-4 p-4 bg-black border border-gray-800 rounded-lg">
+                    <div className="p-3 bg-gray-800 rounded-lg">
+                      <contact.icon className="h-6 w-6 text-blue-500" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-white mb-1 tracking-wide">{contact.title}</h4>
+                      <p className="text-gray-300 font-medium mb-1">{contact.content}</p>
+                      <p className="text-sm text-gray-500">{contact.subtitle}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
             
-            <Card className="border-0 shadow-xl animate-fade-in delay-300">
+            <Card className="bg-black border-gray-800">
               <CardHeader>
-                <CardTitle className="text-2xl text-gray-900">Send us a Message</CardTitle>
-                <CardDescription>We'd love to hear about your project and how we can help</CardDescription>
+                <CardTitle className="text-2xl text-white font-bold tracking-wide">SEND MESSAGE</CardTitle>
+                <CardDescription className="text-gray-400">Tell us about your project requirements</CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name" className="text-gray-700 font-medium">Name *</Label>
-                      <Input id="name" placeholder="Your full name" className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
+                      <Label htmlFor="name" className="text-gray-300 font-medium">NAME *</Label>
+                      <Input id="name" placeholder="Your name" className="mt-1 bg-gray-800 border-gray-700 text-white focus:border-blue-500" />
                     </div>
                     <div>
-                      <Label htmlFor="email" className="text-gray-700 font-medium">Email *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
+                      <Label htmlFor="email" className="text-gray-300 font-medium">EMAIL *</Label>
+                      <Input id="email" type="email" placeholder="your@email.com" className="mt-1 bg-gray-800 border-gray-700 text-white focus:border-blue-500" />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="subject" className="text-gray-700 font-medium">Subject *</Label>
-                    <Input id="subject" placeholder="What can we help you with?" className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
+                    <Label htmlFor="subject" className="text-gray-300 font-medium">SUBJECT *</Label>
+                    <Input id="subject" placeholder="Project inquiry" className="mt-1 bg-gray-800 border-gray-700 text-white focus:border-blue-500" />
                   </div>
                   <div>
-                    <Label htmlFor="message" className="text-gray-700 font-medium">Message *</Label>
+                    <Label htmlFor="message" className="text-gray-300 font-medium">MESSAGE *</Label>
                     <Textarea 
                       id="message" 
-                      placeholder="Tell us about your project and requirements..." 
-                      className="mt-1 border-gray-300 focus:border-blue-500 focus:ring-blue-500 min-h-[120px]" 
+                      placeholder="Describe your project requirements..." 
+                      className="mt-1 bg-gray-800 border-gray-700 text-white focus:border-blue-500 min-h-[120px]" 
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-                    Send Message
+                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-medium tracking-wide">
+                    SEND MESSAGE
                   </Button>
                 </form>
               </CardContent>
@@ -650,61 +427,32 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-4 relative overflow-hidden">
-        <div className="container mx-auto relative z-10">
+      <footer className="bg-black border-t border-gray-800 py-16 px-6">
+        <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Company Info */}
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
+                  src="/lovable-uploads/bf4614f9-4165-4a87-b5e4-9004f19c4109.png" 
                   alt="VS Tech Horizon Logo" 
-                  className="h-10 w-auto"
+                  className="h-8 w-8"
                 />
-                <span className="text-xl font-bold" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
+                <span className="text-xl font-bold text-white">VS TECH HORIZON</span>
               </div>
               <p className="text-gray-400 leading-relaxed">
-                Pioneering the future of robotics and AI education through innovative solutions and cutting-edge technology.
+                Advancing the future of robotics and AI education through innovative technology solutions.
               </p>
-              <div className="flex space-x-4">
-                {[
-                  { icon: Facebook, href: "#", label: "Facebook" },
-                  { icon: Instagram, href: "#", label: "Instagram" },
-                  { icon: X, href: "#", label: "X" },
-                  { icon: Youtube, href: "#", label: "YouTube" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" }
-                ].map((social, index) => (
-                  <a 
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition-all duration-300 group hover:scale-110"
-                  >
-                    <social.icon className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                  </a>
-                ))}
-              </div>
             </div>
 
             {/* Quick Links */}
-            <div className="animate-fade-in delay-200">
-              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-6 tracking-wide">NAVIGATION</h3>
               <ul className="space-y-3">
-                {[
-                  { name: "About Us", action: () => scrollToSection('about') },
-                  { name: "Services", action: () => scrollToSection('services') },
-                  { name: "Portfolio", action: () => scrollToSection('portfolio') },
-                  { name: "Contact", action: () => scrollToSection('contact') },
-                  { name: "Robotics Lab", action: () => navigate('/services/robotics-lab') },
-                  { name: "AI Training", action: () => navigate('/services/ai-training') }
-                ].map((link, index) => (
-                  <li key={link.name}>
-                    <button
-                      onClick={link.action}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center space-x-2 group"
-                    >
-                      <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <span>{link.name}</span>
+                {['About', 'Services', 'Portfolio', 'Contact'].map((link) => (
+                  <li key={link}>
+                    <button className="text-gray-400 hover:text-white transition-colors duration-300 text-sm tracking-wide">
+                      {link.toUpperCase()}
                     </button>
                   </li>
                 ))}
@@ -712,48 +460,25 @@ const Index = () => {
             </div>
 
             {/* Services */}
-            <div className="animate-fade-in delay-300">
-              <h3 className="text-lg font-semibold mb-6">Our Services</h3>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-6 tracking-wide">SOLUTIONS</h3>
               <ul className="space-y-3">
-                {[
-                  "Robotics Lab Setup",
-                  "AI Training Programs", 
-                  "Industrial Automation",
-                  "Educational Workshops",
-                  "Technical Consulting",
-                  "Research & Development"
-                ].map((service, index) => (
-                  <li key={service} className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer">
-                    {service}
+                {['Robotics Lab', 'AI Training', 'Industrial Automation', 'Consulting'].map((service) => (
+                  <li key={service} className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer text-sm tracking-wide">
+                    {service.toUpperCase()}
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Contact Info */}
-            <div className="animate-fade-in delay-400">
-              <h3 className="text-lg font-semibold mb-6">Contact Info</h3>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-6 tracking-wide">CONTACT</h3>
               <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Mail className="h-5 w-5 text-blue-400 mt-1" />
-                  <div>
-                    <p className="text-gray-400">Email</p>
-                    <p className="text-white font-medium">contact@vstechhorizon.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Phone className="h-5 w-5 text-blue-400 mt-1" />
-                  <div>
-                    <p className="text-gray-400">Phone</p>
-                    <p className="text-white font-medium">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <MapPin className="h-5 w-5 text-blue-400 mt-1" />
-                  <div>
-                    <p className="text-gray-400">Address</p>
-                    <p className="text-white font-medium">123 Innovation Drive<br />Tech City, TC 12345</p>
-                  </div>
+                <div className="text-gray-400 text-sm">
+                  <p>contact@vstechhorizon.com</p>
+                  <p>+1 (555) 123-4567</p>
+                  <p>123 Innovation Drive<br />Tech City, TC 12345</p>
                 </div>
               </div>
             </div>
@@ -762,20 +487,14 @@ const Index = () => {
           {/* Footer Bottom */}
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-                <p className="text-gray-400">&copy; 2024 VS Tech Horizon Pvt. Ltd. All rights reserved.</p>
-                <div className="flex space-x-6">
-                  <button className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
-                    Privacy Policy
-                  </button>
-                  <button className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
-                    Terms of Service
-                  </button>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Heart className="h-4 w-4 text-red-400" />
-                <span className="text-sm">Made with passion for innovation</span>
+              <p className="text-gray-500 text-sm">&copy; 2024 VS Tech Horizon Pvt. Ltd. All rights reserved.</p>
+              <div className="flex space-x-6">
+                <button className="text-gray-500 hover:text-white transition-colors duration-300 text-sm">
+                  Privacy Policy
+                </button>
+                <button className="text-gray-500 hover:text-white transition-colors duration-300 text-sm">
+                  Terms of Service
+                </button>
               </div>
             </div>
           </div>
