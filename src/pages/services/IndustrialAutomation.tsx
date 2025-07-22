@@ -2,150 +2,165 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, Cog, Settings, Zap, CheckCircle, TrendingUp, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { 
+  ArrowLeft, 
+  Cog, 
+  Settings, 
+  Users, 
+  BookOpen, 
+  Award,
+  CheckCircle,
+  Star,
+  Play,
+  ArrowRight,
+  Mail,
+  Phone,
+  Zap,
+  Target,
+  TrendingUp,
+  Shield,
+  Wrench
+} from 'lucide-react';
 
 const IndustrialAutomation = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-orange-900/20 to-red-900/20">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md z-50 border-b border-gray-700">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/fdc0c3ef-d2b3-4ae6-b208-5aa7c1730f95.png" 
+                alt="VS Tech Horizon Logo" 
+                className="h-10 w-auto"
+              />
+              <span className="text-xl font-bold text-gray-800" style={{fontFamily: 'Times, serif'}}>VS Tech Horizon Pvt. Ltd.</span>
+            </div>
+            <div className="flex items-center space-x-4">
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/')}
-                className="text-gray-300 hover:text-blue-400 p-2"
+                className="flex items-center space-x-2"
               >
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Back to Home
+                <ArrowLeft className="h-4 w-4" />
+                <span>Back to Home</span>
               </Button>
-            </div>
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/bd0ace43-2a7f-48d6-b49c-ab29e87ddeac.png" 
-                alt="VS Tech Horizon Logo" 
-                className="h-8 w-auto"
-              />
-              <span className="text-white font-bold">VS Tech Horizon</span>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full">
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4">
-        <div className="container mx-auto text-center">
+      <section className="pt-32 pb-16 px-4 bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float delay-300"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="flex justify-center mb-8">
-              <div className="w-24 h-24 bg-gradient-to-br from-orange-500/20 to-red-600/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-orange-400/30">
-                <Cog className="h-12 w-12 text-orange-400" />
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Smart 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
+                  Industrial
+                </span>
+                Automation
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Custom intelligent robotics solutions for manufacturing optimization, quality control systems, 
+                and complete industrial automation that drives efficiency and productivity.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  size="lg" 
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl group"
+                >
+                  Get Consultation
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-gray-300 hover:border-orange-600 text-gray-700 hover:text-orange-600 px-8 py-4 text-lg rounded-full group"
+                >
+                  <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                  View Solutions
+                </Button>
               </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Industrial <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Automation</span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Precision robotics solutions for manufacturing processes and quality control systems that drive efficiency and reduce costs.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Solutions Overview */}
-      <section className="py-16 px-4 bg-gray-800/30">
+      {/* Solutions Section */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Revolutionary Manufacturing Solutions</h2>
-              <p className="text-gray-300 mb-6">
-                Our industrial automation systems integrate cutting-edge robotics with AI-driven quality control to optimize your manufacturing processes.
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-orange-600/20 rounded-lg">
-                  <div className="text-2xl font-bold text-orange-400">85%</div>
-                  <div className="text-gray-300 text-sm">Cost Reduction</div>
-                </div>
-                <div className="text-center p-4 bg-red-600/20 rounded-lg">
-                  <div className="text-2xl font-bold text-red-400">99.5%</div>
-                  <div className="text-gray-300 text-sm">Accuracy Rate</div>
-                </div>
-                <div className="text-center p-4 bg-yellow-600/20 rounded-lg">
-                  <div className="text-2xl font-bold text-yellow-400">24/7</div>
-                  <div className="text-gray-300 text-sm">Operation</div>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-6">
-              {[
-                {
-                  title: "Robotic Assembly Lines",
-                  description: "Automated assembly systems with precision robotics",
-                  icon: Settings,
-                  color: "from-orange-500 to-red-500"
-                },
-                {
-                  title: "Quality Control Systems", 
-                  description: "AI-powered inspection and testing automation",
-                  icon: Shield,
-                  color: "from-red-500 to-pink-500"
-                },
-                {
-                  title: "Process Optimization",
-                  description: "Data-driven efficiency improvements and monitoring",
-                  icon: TrendingUp,
-                  color: "from-yellow-500 to-orange-500"
-                }
-              ].map((solution, index) => (
-                <div key={index} className="flex space-x-4 p-6 bg-gray-800/60 rounded-lg hover:bg-gray-700/60 transition-all duration-300 group">
-                  <div className={`p-3 bg-gradient-to-r ${solution.color} rounded-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <solution.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">{solution.title}</h3>
-                    <p className="text-gray-300">{solution.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Automation Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive industrial automation solutions tailored to your manufacturing needs
+            </p>
           </div>
-
-          {/* Industry Applications */}
-          <div className="grid md:grid-cols-4 gap-6">
+          
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Automotive",
-                applications: ["Assembly Line Automation", "Paint Shop Robotics", "Quality Inspection", "Parts Handling"]
+                icon: Cog,
+                title: "Process Automation",
+                description: "Intelligent automation systems that optimize manufacturing processes and reduce manual intervention.",
+                benefits: ["40% efficiency increase", "Reduced errors", "24/7 operation"],
+                gradient: "from-orange-500 to-red-500"
               },
               {
-                title: "Electronics",
-                applications: ["PCB Assembly", "Component Testing", "Packaging Automation", "Precision Soldering"]
+                icon: Shield,
+                title: "Quality Control Systems",
+                description: "Advanced AI-powered quality control with computer vision and automated testing protocols.",
+                benefits: ["99.5% accuracy", "Real-time monitoring", "Defect prevention"],
+                gradient: "from-blue-500 to-cyan-500"
               },
               {
-                title: "Food & Beverage",
-                applications: ["Packaging Systems", "Quality Sorting", "Bottling Lines", "Safety Monitoring"]
-              },
-              {
-                title: "Pharmaceuticals",
-                applications: ["Sterile Processing", "Drug Packaging", "Quality Testing", "Batch Tracking"]
+                icon: Settings,
+                title: "System Integration",
+                description: "Seamless integration of robotics with existing manufacturing infrastructure and ERP systems.",
+                benefits: ["Plug-and-play setup", "Minimal downtime", "Scalable solutions"],
+                gradient: "from-green-500 to-emerald-500"
               }
-            ].map((industry, index) => (
-              <Card key={index} className="bg-gray-800/60 border-gray-700 hover:bg-gray-700/60 transform hover:scale-105 transition-all duration-300">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-lg text-white">{industry.title}</CardTitle>
+            ].map((solution, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-500 group">
+                <div className={`h-2 bg-gradient-to-r ${solution.gradient}`}></div>
+                <CardHeader className="text-center pb-4">
+                  <div className={`mx-auto mb-4 p-4 bg-gradient-to-br ${solution.gradient} rounded-2xl w-fit group-hover:scale-110 transition-transform duration-300`}>
+                    <solution.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
+                    {solution.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2">
-                    {industry.applications.map((app, i) => (
-                      <li key={i} className="flex items-center space-x-2">
-                        <Zap className="h-4 w-4 text-orange-400" />
-                        <span className="text-gray-300 text-sm">{app}</span>
-                      </li>
+                  <CardDescription className="text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
+                    {solution.description}
+                  </CardDescription>
+                  <div className="space-y-2 mb-6">
+                    {solution.benefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-sm text-gray-600">{benefit}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
+                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-full">
+                    Learn More
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -153,61 +168,125 @@ const IndustrialAutomation = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-orange-600/10 to-red-600/10">
+      {/* Industry Applications */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-orange-50">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Choose Our Automation Solutions?</h2>
-            <p className="text-xl text-gray-300">Experience the future of manufacturing today</p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Industry Applications
+            </h2>
+            <p className="text-xl text-gray-600">
+              Our automation solutions serve diverse manufacturing industries
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Increased Efficiency",
-                description: "Up to 300% improvement in production speed",
-                icon: TrendingUp
-              },
-              {
-                title: "Reduced Costs", 
-                description: "Significant reduction in labor and operational costs",
-                icon: CheckCircle
-              },
-              {
-                title: "Enhanced Quality",
-                description: "Consistent, high-quality output with minimal defects",
-                icon: Shield
-              },
-              {
-                title: "24/7 Operation",
-                description: "Continuous production with minimal downtime",
-                icon: Zap
-              }
-            ].map((benefit, index) => (
-              <div key={index} className="text-center p-6 bg-gray-800/60 rounded-lg hover:bg-gray-700/60 transition-all duration-300 group">
-                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-orange-500 to-red-600 rounded-full w-fit group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="h-8 w-8 text-white" />
+          <div className="grid md:grid-cols-2 gap-12">
+            <Card className="border-0 shadow-xl">
+              <CardHeader>
+                <CardTitle className="text-2xl text-gray-900 flex items-center">
+                  <Wrench className="mr-3 h-6 w-6 text-orange-600" />
+                  Manufacturing Industries
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    "Automotive Assembly Lines",
+                    "Electronics Manufacturing",
+                    "Food Processing & Packaging",
+                    "Pharmaceutical Production",
+                    "Textile and Garment Industry",
+                    "Metal Fabrication & Machining"
+                  ].map((industry, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{industry}</span>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                <p className="text-gray-300">{benefit.description}</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-xl">
+              <CardHeader>
+                <CardTitle className="text-2xl text-gray-900 flex items-center">
+                  <Target className="mr-3 h-6 w-6 text-blue-600" />
+                  Key Benefits
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    "Increased Production Efficiency",
+                    "Reduced Operating Costs",
+                    "Improved Product Quality",
+                    "Enhanced Worker Safety",
+                    "Real-time Data Analytics",
+                    "Predictive Maintenance"
+                  ].map((benefit, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Metrics */}
+      <section className="py-20 px-4 bg-gradient-to-br from-orange-600 to-red-600 text-white">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "50+", label: "Manufacturing Plants", icon: Cog },
+              { number: "40%", label: "Efficiency Increase", icon: TrendingUp },
+              { number: "99.5%", label: "Quality Accuracy", icon: Shield },
+              { number: "24/7", label: "System Uptime", icon: Zap }
+            ].map((stat, index) => (
+              <div key={index} className="animate-fade-in" style={{animationDelay: `${index * 200}ms`}}>
+                <div className="mb-4">
+                  <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-80" />
+                  <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
+                  <div className="text-lg opacity-90">{stat.label}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-16 px-4 bg-gradient-to-r from-orange-600/20 to-red-600/20">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Automate Your Manufacturing?</h2>
-          <p className="text-xl text-gray-300 mb-8">Let's discuss how our solutions can transform your production line</p>
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-8 py-6 text-lg"
-            onClick={() => navigate('/#contact')}
-          >
-            Schedule Consultation
-          </Button>
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-orange-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Transform Your Manufacturing Today
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Get a custom automation solution designed specifically for your industry needs
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl flex items-center"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Request Quote
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-full flex items-center"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Schedule Visit
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
